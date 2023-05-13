@@ -14,7 +14,9 @@ bool testMtmchkin()
     cards[1] = Card(CardType::Buff, stats);
     cards[2] = Card(CardType::Battle, stats);
     cards[3] = Card(CardType::Heal, stats);
+    //Mtmchkin game("Daniel", cards, 4, Player(nullptr, 0, 0));
     Mtmchkin game("Daniel", cards, 4);
+
     while(!game.isOver()){
         game.playNextCard();
     }

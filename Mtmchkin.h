@@ -27,10 +27,9 @@ public:
      * @result
      *      An instance of Mtmchkin
     */
-    Mtmchkin(const char* playerName, const Card* cardsArray, int numOfCards);
+    Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards);
 
-
-    /*
+/*
      * Play the next Card - according to the instruction in the exercise document
      *
      * @return
@@ -57,7 +56,16 @@ public:
      */
     GameStatus getGameStatus() const;
 
-    //TODO: complete the Mtmchkin class.
+    /*
+     * method updateGameStatus:
+     * updates the game status according to the rules.
+     */
+    void updateGameStatus();
+
+    /*
+     * destructor.
+     */
+    ~Mtmchkin();
     static const int FIRST_CARD = 0;
 
     /*
@@ -66,13 +74,11 @@ public:
      */
     void updateNextCard();
 private:
-    Player player;
-    Card* cardsArray;
-    int numOfCards;
-    int nextCard;
-    GameStatus gameStatus;
-    //TODO: complete the Mtmchkin class.
-
+    Player m_player;
+    Card* m_cardsArray;
+    int m_numOfCards;
+    int m_nextCard;
+    GameStatus m_gameStatus;
 };
 
 

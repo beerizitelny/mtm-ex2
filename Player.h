@@ -8,12 +8,12 @@
 #include <cstring>
 #include "utilities.h"
 class Player{
-    char* name;
-    int level;
-    int force;
-    int HP;
-    int maxHP;
-    int coins;
+    char* m_name;
+    int m_level;
+    int m_force;
+    int m_HP;
+    int m_maxHP;
+    int m_coins;
 
 
 public:
@@ -30,7 +30,7 @@ public:
      * A new Player's level is 1 and it has 0 coins. The default values of maxHP is 100 and of force is 5.
      * when given a reference to a Player object the constructor will clone it to a new one.
      */
-    Player(const char* name, int maxHP, int force);
+    Player(const char* name, int maxHP = 100, int force = 5);
     Player(const Player&);
 
     /*
@@ -39,6 +39,10 @@ public:
      */
     ~Player();
 
+    /*
+     * assignment operator
+     */
+    Player& operator=(const Player& player);
     /*
      * setters methods:
      * sets the value of the object, using the given parameter.

@@ -3,102 +3,116 @@
 //
 #include "Player.h"
 
-Player::Player(const char* name, int maxHP = 100, int force = 5){
-    this->name = new char [strlen(name) + 1];
-    // what if NULL???
-    strcpy(this->name, name);
-    this->name[strlen(name)] = '\0';
-    this->maxHP = maxHP;
-    this->HP = maxHP;
-    this->force = force;
-    this->level = NEW_PLAYER_LEVEL;
-    this->coins = MIN_COINS;
+Player::Player(const char* name, int maxHP, int force){
+    this->m_name = new char [strlen(name) + 1];
+    strcpy(this->m_name, name);
+    this->m_name[strlen(name)] = '\0';
+    this->m_maxHP = maxHP;
+    this->m_HP = maxHP;
+    this->m_force = force;
+    this->m_level = NEW_PLAYER_LEVEL;
+    this->m_coins = MIN_COINS;
 }
 
 Player::Player(const Player& player){
-    this->name = new char [strlen(player.name) + 1];
-    strcpy(this->name, player.name);
-    this->name[strlen(player.name)] = '\0';
-    this->maxHP = player.maxHP;
-    this->HP = player.maxHP;
-    this->force = player.force;
-    this->level = NEW_PLAYER_LEVEL;
-    this->coins = MIN_COINS;
+    this->m_name = new char [strlen(player.m_name) + 1];
+    strcpy(this->m_name, player.m_name);
+    this->m_name[strlen(player.m_name)] = '\0';
+    this->m_maxHP = player.m_maxHP;
+    this->m_HP = player.m_maxHP;
+    this->m_force = player.m_force;
+    this->m_level = NEW_PLAYER_LEVEL;
+    this->m_coins = MIN_COINS;
 }
 
 Player::~Player(){
-    delete this->name;
+    delete this->m_name;
 }
 
+Player& Player::operator=(const Player& player){
+    if (this == &player){
+        return *this;
+    }
+    delete m_name;
+    this->m_name = new char [strlen(player.m_name) + 1];
+    strcpy(this->m_name, player.m_name);
+    this->m_name[strlen(player.m_name)] = '\0';
+    this->m_HP = player.m_HP;
+    this->m_level = player.m_level;
+    this->m_coins = player.m_coins;
+    this->m_force = player.m_force;
+    this->m_maxHP = player.m_maxHP;
+    return *this;
+}
 /*
  * setters methods:
  * sets the value of the object, using the given parameter.
  */
 void Player::setLevel(int level){
-    this->level = level;
+    this->m_level = level;
 }
 void Player::setForce(int force){
-    this->force = force;
+    this->m_force = force;
 }
 void Player::setMaxHP(int maxHP){
-    this->maxHP = maxHP;
+    this->m_maxHP = maxHP;
 }
 void Player::setCoins(int coins){
-    this->coins = coins;
+    this->m_coins = coins;
 }
 
 int Player::getHP() const{
-    return this.HP;
+    return this->m_HP;
 }
 void Player::printInfo() const{
-    printPlayerInfo(this->name, this->level, this->force, this->HP, this->coins);
+    printPlayerInfo(this->m_name, this->m_level, this->m_force, this->m_HP, this->m_coins);
 }
 
 bool Player::levelUp(){
-    if (this->level < MAX_LEVEL){
-        this->level++;
+    if (this->m_level < MAX_LEVEL){
+        this->m_level++;
         return true;
     }
     return false;
 }
 
 int Player::getLevel() const{
-    return this->level;
+    return this->m_level;
 }
 
 void Player::buff(int buffPoints){
-    this->force += buffPoints;
+    this->m_force += buffPoints;
 }
 
 void Player::heal(int healPoints){
     if (healPoints < 0){
         return;
     }
-    this->HP = (this->HP + healPoints > this->maxHP) ? this->maxHP : this->HP + healPoints;
+    this->m_HP = (this->m_HP + healPoints > this->m_maxHP) ? this->m_maxHP : this->m_HP + healPoints;
 }
 
 
 void Player::damage(int damage){
-    this->HP = (this->HP > damage) ? this->HP - damage : MIN_HP;
+    this->m_HP = (this->m_HP > damage) ? this->m_HP - damage : MIN_HP;
 }
 
 bool Player::isKnockedOut() const{
-    return (this->HP == MIN_HP);
+    return (this->m_HP == MIN_HP);
 }
 
 void Player::addCoins(int coinsToAdd){
-    this->coins += coinsToAdd;
+    this->m_coins += coinsToAdd;
 }
 
 bool Player::pay(int price){
-    if (this->coins < price){
+    if (this->m_coins < price){
         return false;
     }
-    this->coins -= price;
+    this->m_coins -= price;
     return true;
 }
 
 int Player::getAttackStrength() const{
-    return this->level + this->force;
+    return this->m_level + this->m_force;
 }
 
