@@ -15,12 +15,14 @@ class Player{
     int maxHP;
     int coins;
 
+
+public:
+    // %%%%% constants values: %%%%%
     static const int MAX_LEVEL = 10;
     static const int MIN_HP = 0;
     static const int MIN_COINS = 0;
     static const int NEW_PLAYER_LEVEL = 1;
 
-public:
     // %%%%% METHODS: %%%%%
     /*
      * method Player:
@@ -28,7 +30,7 @@ public:
      * A new Player's level is 1 and it has 0 coins. The default values of maxHP is 100 and of force is 5.
      * when given a reference to a Player object the constructor will clone it to a new one.
      */
-    Player(char* name, int maxHP, int force);
+    Player(const char* name, int maxHP, int force);
     Player(const Player&);
 
     /*
@@ -45,12 +47,13 @@ public:
     void setForce(int);
     void setMaxHP(int);
     void setCoins(int);
+    int getHP() const;
 
     /*
      * method printInfo:
      * prints the information of the Player by the order: Name, Level, Force, HP, Coins.
      */
-    void PrintInfo() const;
+    void printInfo() const;
 
     /*
      * method levelUp:

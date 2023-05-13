@@ -3,8 +3,9 @@
 //
 #include "Player.h"
 
-Player::Player(char* name, int maxHP = 100, int force = 5){
+Player::Player(const char* name, int maxHP = 100, int force = 5){
     this->name = new char [strlen(name) + 1];
+    // what if NULL???
     strcpy(this->name, name);
     this->name[strlen(name)] = '\0';
     this->maxHP = maxHP;
@@ -46,7 +47,10 @@ void Player::setCoins(int coins){
     this->coins = coins;
 }
 
-void Player::PrintInfo() const{
+int Player::getHP() const{
+    return this.HP;
+}
+void Player::printInfo() const{
     printPlayerInfo(this->name, this->level, this->force, this->HP, this->coins);
 }
 

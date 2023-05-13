@@ -58,8 +58,19 @@ public:
     GameStatus getGameStatus() const;
 
     //TODO: complete the Mtmchkin class.
+    static const int FIRST_CARD = 0;
 
+    /*
+     * method nextCard:
+     * updates the current card to the next, if it is the last card the next card will be the first.
+     */
+    void updateNextCard();
 private:
+    Player player;
+    Card* cardsArray;
+    int numOfCards;
+    int nextCard;
+    GameStatus gameStatus;
     //TODO: complete the Mtmchkin class.
 
 };
