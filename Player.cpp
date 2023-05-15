@@ -31,22 +31,6 @@ Player& Player::operator=(const Player& player){
     this->m_maxHP = player.m_maxHP;
     return *this;
 }
-/* SHOULDT SET SETTERS IN EXERCISE DETAILS AND THIS IS DANGEROUS SINCE NOT CHECKING VALIDITY
- * setters methods:
- * sets the value of the object, using the given parameter.
-
-void Player::setLevel(int level){
-    this->m_level = level;
-}
-void Player::setForce(int force){
-    this->m_force = force;
-}
-void Player::setMaxHP(int maxHP){
-    this->m_maxHP = maxHP;
-}
-void Player::setCoins(int coins){
-    this->m_coins = coins;
-}*/
 
 int Player::getHP() const{
     return this->m_HP;

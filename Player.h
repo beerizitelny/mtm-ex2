@@ -37,14 +37,16 @@ public:
      * assignment operator
      */
     Player& operator=(const Player& player);
+
     /*
-     * setters methods:
-     * sets the value of the object, using the given parameter.
+     * destructor for Player object -> use default destructor
      */
-    void setLevel(int);
-    void setForce(int);
-    void setMaxHP(int);
-    void setCoins(int);
+     ~Player() = default;
+
+    /*
+     * method getHP:
+     * returns the HP of the player
+     */
     int getHP() const;
 
     /*
