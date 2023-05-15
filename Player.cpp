@@ -3,9 +3,9 @@
 
 Player::Player(const std::string& name, int maxHP, int force){
     this->m_name = std::string(name);
-    this->m_maxHP = maxHP;
+    this->m_maxHP = maxHP > 0 ? maxHP : DEFAULT_MAX_HP;
     this->m_HP = maxHP;
-    this->m_force = force;
+    this->m_force = force >= 0 ? force : DEFAULT_FORCE;
     this->m_level = NEW_PLAYER_LEVEL;
     this->m_coins = MIN_COINS;
 }

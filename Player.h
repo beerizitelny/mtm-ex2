@@ -20,6 +20,8 @@ public:
     static const int MIN_HP = 0;
     static const int MIN_COINS = 0;
     static const int NEW_PLAYER_LEVEL = 1;
+    static const int DEFAULT_MAX_HP = 100;
+    static const int DEFAULT_FORCE = 5;
 
     // %%%%% METHODS: %%%%%
     /*
@@ -28,7 +30,7 @@ public:
      * A new Player's level is 1 and it has 0 coins. The default values of maxHP is 100 and of force is 5.
      * when given a reference to a Player object the constructor will clone it to a new one.
      */
-    explicit Player(const std::string& name, int maxHP = 100, int force = 5);
+    explicit Player(const std::string& name, int maxHP = DEFAULT_MAX_HP, int force = DEFAULT_FORCE);
     Player(const Player&);
 
     /*
