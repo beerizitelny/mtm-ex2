@@ -71,7 +71,7 @@ int Player::getLevel() const{
 }
 
 void Player::buff(int buffPoints){
-    this->m_force += buffPoints;
+    this->m_force += (buffPoints > 0 ? buffPoints : 0);
 }
 
 void Player::heal(int healPoints){
@@ -83,6 +83,9 @@ void Player::heal(int healPoints){
 
 
 void Player::damage(int damage){
+    if (damage < 0) {
+        return;
+    }
     this->m_HP = (this->m_HP > damage) ? this->m_HP - damage : MIN_HP;
 }
 
@@ -91,7 +94,7 @@ bool Player::isKnockedOut() const{
 }
 
 void Player::addCoins(int coinsToAdd){
-    this->m_coins += coinsToAdd;
+    this->m_coins += (coinsToAdd > 0 ? coinsToAdd : 0);
 }
 
 bool Player::pay(int price){

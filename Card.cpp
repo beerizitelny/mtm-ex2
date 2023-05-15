@@ -26,9 +26,10 @@ void Card::applyEncounter(Player& player) const{
             if (player.pay(this->m_stats.cost)){
                 player.buff(this->m_stats.buff);
             }
+            break;
         case CardType::Treasure:
             player.addCoins(this->m_stats.loot);
-
+            break;
     }
 }
 
