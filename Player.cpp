@@ -35,11 +35,9 @@ Player& Player::operator=(const Player& player){
 int Player::getHP() const{
     return this->m_HP;
 }
+
 void Player::printInfo() const{
-    char* cTypeStringName = new char[this->m_name.length()+1];
-    std::strcpy(cTypeStringName,this->m_name.c_str());
-    printPlayerInfo(cTypeStringName, this->m_level, this->m_force, this->m_HP, this->m_coins);
-    delete[] cTypeStringName;
+    printPlayerInfo(this->m_name.c_str(), this->m_level, this->m_force, this->m_HP, this->m_coins);
 }
 
 bool Player::levelUp(){

@@ -2,7 +2,6 @@
 #define MTM_EX2_PLAYER_H
 
 #include <string>
-#include <cstring>
 #include "utilities.h"
 
 class Player{
