@@ -31,10 +31,10 @@ Player& Player::operator=(const Player& player){
     this->m_maxHP = player.m_maxHP;
     return *this;
 }
-/*
+/* SHOULDT SET SETTERS IN EXERCISE DETAILS AND THIS IS DANGEROUS SINCE NOT CHECKING VALIDITY
  * setters methods:
  * sets the value of the object, using the given parameter.
- */
+
 void Player::setLevel(int level){
     this->m_level = level;
 }
@@ -46,7 +46,7 @@ void Player::setMaxHP(int maxHP){
 }
 void Player::setCoins(int coins){
     this->m_coins = coins;
-}
+}*/
 
 int Player::getHP() const{
     return this->m_HP;
@@ -101,7 +101,10 @@ bool Player::pay(int price){
     if (this->m_coins < price){
         return false;
     }
-    this->m_coins -= price;
+    // waiting for piazza @734. for now - accepting perks and not paying invalid payment value (comply with tests)
+    if (price > 0) {
+        this->m_coins -= price;
+    }
     return true;
 }
 
