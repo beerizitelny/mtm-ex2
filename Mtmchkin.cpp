@@ -3,7 +3,7 @@
 //
 #include "Mtmchkin.h"
 
-Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards) : m_player(playerName, 100, 50) {
+Mtmchkin::Mtmchkin(const char *playerName, const Card *cardsArray, int numOfCards) : m_player(playerName) {
     this->m_cardsArray = new Card[numOfCards];
     for (int i = 0; i < numOfCards; ++i) {
         this->m_cardsArray[i] = cardsArray[i];
@@ -18,8 +18,9 @@ Mtmchkin::~Mtmchkin() {
 }
 
 void Mtmchkin::playNextCard(){
-    this->m_cardsArray[this->m_nextCard].printInfo();
-    this->m_cardsArray[this->m_nextCard].applyEncounter(this->m_player);
+    Card nextCard = this->m_cardsArray[this->m_nextCard];
+    nextCard.printInfo();
+    nextCard.applyEncounter(this->m_player);
     this->m_player.printInfo();
     this->updateNextCard();
     this->updateGameStatus();

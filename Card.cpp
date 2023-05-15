@@ -1,6 +1,3 @@
-//
-// Created by baeri on 13/05/2023.
-//
 #include "Card.h"
 
 Card::Card(CardType type, const CardStats& stats){
@@ -29,9 +26,10 @@ void Card::applyEncounter(Player& player) const{
             if (player.pay(this->m_stats.cost)){
                 player.buff(this->m_stats.buff);
             }
+            break;
         case CardType::Treasure:
             player.addCoins(this->m_stats.loot);
-
+            break;
     }
 }
 
