@@ -1,14 +1,12 @@
-//
-// Created by baeri on 13/05/2023.
-//
-
 #ifndef MTM_EX2_PLAYER_H
 #define MTM_EX2_PLAYER_H
 
+#include <string>
 #include <cstring>
 #include "utilities.h"
+
 class Player{
-    char* m_name;
+    std::string m_name;
     int m_level;
     int m_force;
     int m_HP;
@@ -30,14 +28,8 @@ public:
      * A new Player's level is 1 and it has 0 coins. The default values of maxHP is 100 and of force is 5.
      * when given a reference to a Player object the constructor will clone it to a new one.
      */
-    Player(const char* name, int maxHP = 100, int force = 5);
+    explicit Player(const std::string& name, int maxHP = 100, int force = 5);
     Player(const Player&);
-
-    /*
-     * method ~Player:
-     * Destructor of the Player class.
-     */
-    ~Player();
 
     /*
      * assignment operator

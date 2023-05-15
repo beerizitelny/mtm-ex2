@@ -1,12 +1,8 @@
-//
-// Created by baeri on 13/05/2023.
-//
+
 #include "Player.h"
 
-Player::Player(const char* name, int maxHP, int force){
-    this->m_name = new char [strlen(name) + 1];
-    strcpy(this->m_name, name);
-    this->m_name[strlen(name)] = '\0';
+Player::Player(const std::string& name, int maxHP, int force){
+    this->m_name = std::string(name);
     this->m_maxHP = maxHP;
     this->m_HP = maxHP;
     this->m_force = force;
@@ -15,9 +11,7 @@ Player::Player(const char* name, int maxHP, int force){
 }
 
 Player::Player(const Player& player){
-    this->m_name = new char [strlen(player.m_name) + 1];
-    strcpy(this->m_name, player.m_name);
-    this->m_name[strlen(player.m_name)] = '\0';
+    this->m_name =  std::string(player.m_name);
     this->m_maxHP = player.m_maxHP;
     this->m_HP = player.m_maxHP;
     this->m_force = player.m_force;
@@ -25,18 +19,11 @@ Player::Player(const Player& player){
     this->m_coins = MIN_COINS;
 }
 
-Player::~Player(){
-    delete this->m_name;
-}
-
 Player& Player::operator=(const Player& player){
     if (this == &player){
         return *this;
     }
-    delete m_name;
-    this->m_name = new char [strlen(player.m_name) + 1];
-    strcpy(this->m_name, player.m_name);
-    this->m_name[strlen(player.m_name)] = '\0';
+    this->m_name = std::string(player.m_name);
     this->m_HP = player.m_HP;
     this->m_level = player.m_level;
     this->m_coins = player.m_coins;
@@ -65,7 +52,9 @@ int Player::getHP() const{
     return this->m_HP;
 }
 void Player::printInfo() const{
-    printPlayerInfo(this->m_name, this->m_level, this->m_force, this->m_HP, this->m_coins);
+    char* cTypeStringName = new char[this->m_name.length()+1];
+    std::strcpy(cTypeStringName,this->m_name.c_str());
+    printPlayerInfo(cTypeStringName, this->m_level, this->m_force, this->m_HP, this->m_coins);
 }
 
 bool Player::levelUp(){

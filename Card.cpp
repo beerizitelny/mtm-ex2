@@ -1,6 +1,3 @@
-//
-// Created by baeri on 13/05/2023.
-//
 #include "Card.h"
 
 Card::Card(CardType type, const CardStats& stats){
